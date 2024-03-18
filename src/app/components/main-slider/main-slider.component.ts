@@ -1,29 +1,13 @@
 import { Component } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-main-slider',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './main-slider.component.html',
-  styleUrls: ['./main-slider.component.css'],
+  styleUrls: ['./main-slider.component.scss']
 })
 export class MainSliderComponent {
-  mainSliderOption: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    dots: true,
-    navSpeed: 700,
-    navText: ['', ''],
-    autoplay: true,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      740: {
-        items: 2,
-      },
-    },
-    nav: false,
-  };
+
 }
