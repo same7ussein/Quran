@@ -8,10 +8,10 @@ const routes: Routes = [
     {path:"",redirectTo:"home",pathMatch:'full'},
     {path:"home",loadComponent:()=>import('./components/home/home.component').then((m)=>m.HomeComponent)},
   ]},
-  // {path:"",loadComponent:()=>import('./components/auth-layout/auth-layout.component').then((m)=>m.AuthLayoutComponent),children:[
-  //   {path:"login",loadComponent:()=>import('./components/login/login.component').then((m)=>m.LoginComponent)},
-  //   {path:"reading",loadComponent:()=>import('./components/register/register.component').then((m)=>m.RegisterComponent)}
-  // ]},
+  {path:"",loadComponent:()=>import('./components/auth-layout/auth-layout.component').then((m)=>m.AuthLayoutComponent),children:[
+    {path:"login",loadComponent:()=>import('./components/login/login.component').then((m)=>m.LoginComponent)},
+    {path:"reading",loadComponent:()=>import('./components/register/register.component').then((m)=>m.RegisterComponent)},
+  ]},
 
   
 ];
