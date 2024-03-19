@@ -15,4 +15,10 @@ export class QuranService {
   SpecialQuran(id:number):Observable<any>{
     return this._HttpClient.get(`https://api.quran.com/api/v4/quran/verses/indopak?chapter_number=${id}`)
   }
+  QuranSpecialAudio(chapter:number ,Recitation:number=7):Observable<any>{
+    return this._HttpClient.get(`https://api.quran.com/api/v4/chapter_recitations/${Recitation}/${chapter}`)
+  }
+  recitations():Observable<any>{
+    return this._HttpClient.get(`https://api.quran.com/api/v4/resources/recitations?language=ar`)
+  }
 }
