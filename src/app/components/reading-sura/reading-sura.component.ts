@@ -64,7 +64,7 @@ getReciter():void{
     }
   })
 }
-id():void{
+reciterchange():void{
   console.log(this.reciterId);
   this._QuranService.QuranSpecialAudio(this.suraId,this.reciterId).subscribe({
     next:(res)=>{
