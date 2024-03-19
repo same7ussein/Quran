@@ -1,2 +1,6 @@
 <p>reading-sura works!</p>
 <audio controls [src]="suraAudio.audio_url"></audio>
+
+<select [(ngModel)]="reciterId"  (click)="id()">
+    <option  *ngFor="let item of reciters" [value]="item.id" class="ar-text-reading" >{{item.translated_name.name}}</option>
+</select>
