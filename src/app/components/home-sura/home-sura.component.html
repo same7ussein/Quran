@@ -1,1 +1,21 @@
-<p>home-sura works!</p>
+<section class="container-fluid">
+    <div class="row g-3">
+        <div class="col-md-4" *ngFor="let item of suraName;let i as index">
+            <div class="d-flex justify-content-between align-items-center border-muted  p-3  rounded-3 sura-name" [routerLink]="['readsura',item.id]">
+               <div class="d-flex align-items-center">
+                <div class="diamond   text-black">
+                    <span >{{item.id}}</span>
+                </div>
+                <div class="">
+                    <p class="h5 fw-bold"> {{item.name_simple}}</p>
+                    <span class="text-muted f--small ">{{item.translated_name.name }}</span>
+                </div>
+               </div>
+                <div class="text-center">
+                    <p class="ar-text h2 ">{{id[item.id-1]}}</p>
+                    <span class="text-muted f--small">{{item.verses_count}} Ayahs</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

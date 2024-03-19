@@ -1,0 +1,47 @@
+.border-muted{
+    border: .0625rem solid #eeeeef;
+}
+.diamond{
+    background-color:#eeeeef;
+    display: flex;
+    align-items: center !important;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius:8px;
+    transform: rotate(45deg);
+    margin-inline-end: 1.2rem;
+    transition: all 0.3s;
+}
+.diamond span{
+    transform: rotate(-45deg);
+    font-weight: 700;
+    font-size: 1rem;
+}
+p{
+    margin: 0;
+}
+.f--small{
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.sura-name{
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.sura-name:hover{
+background-color: #F8F9FA;
+border: .0625rem solid #3AB6AA ;
+.f--small{
+    color: #3AB6AA !important;
+}
+.diamond{
+    background-color: #3AB6AA;
+    span{
+        color: #fff;
+    }
+}
+
+   
+
+}
