@@ -1,21 +1,21 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { HomeSuraComponent } from './components/home-sura/home-sura.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { BlanLayoutComponent } from './components/blan-layout/blan-layout.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeSuraComponent,
-    FooterComponent
+    BlanLayoutComponent,
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+  
+}
