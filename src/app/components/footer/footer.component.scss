@@ -1,0 +1,43 @@
+footer {
+
+    background-color: #299083;
+    background-image: linear-gradient(90deg, #1c857f 0%, #3ab6aa 85%);
+
+    .title-caption {
+        font-size: .875rem;
+        font-weight: 300;
+        color: azure;
+    }
+
+    .terms-color {
+        color: #a3ece0;
+        text-decoration: underline;
+    }
+
+    .copyright-color {
+        color: #a3ece0;
+    }
+
+    ul {
+        padding-inline: 0rem;
+        padding-left: .1875rem;
+    }
+
+    li {
+        list-style-type: none;
+        cursor: pointer;
+    }
+
+    ul .social-link {
+        transition: all 0.3s;
+    }
+
+    ul .social-link:hover {
+        color: #a3ece0;
+    }
+
+    i {
+        color: #FFF;
+    }
+
+}

@@ -1,12 +1,9 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { HomeSuraComponent } from './components/home-sura/home-sura.component';
 import { BlanLayoutComponent } from './components/blan-layout/blan-layout.component';
-import { HttpClientModule } from '@angular/common/http';
-
-import { NgxLoadingModule } from "ngx-loading";
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,10 +11,7 @@ import { NgxLoadingModule } from "ngx-loading";
     BrowserModule,
     AppRoutingModule,
     BlanLayoutComponent,
-    HttpClientModule,
- 
-   BlanLayoutComponent,
-   
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
