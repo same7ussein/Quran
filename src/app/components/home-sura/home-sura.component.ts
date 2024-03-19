@@ -36,7 +36,7 @@ export class HomeSuraComponent {
             this.id.push(this.suraName[i].id.toString());
           }
         }
-        console.log(this.id);
+        // console.log(this.id);
       },
       error: (err) => {
         console.log(err);
