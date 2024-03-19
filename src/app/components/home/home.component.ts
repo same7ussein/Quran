@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { QuranService } from 'src/app/shared/services/quran.service';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent  {
+
 
 }

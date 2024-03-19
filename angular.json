@@ -11,6 +11,7 @@
           "skipTests": true,
           "standalone": true
         }
+        
       },
       "root": "",
       "sourceRoot": "src",
