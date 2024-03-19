@@ -3,6 +3,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HomeSuraComponent } from './components/home-sura/home-sura.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { HomeSuraComponent } from './components/home-sura/home-sura.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeSuraComponent
+    HomeSuraComponent,
+    FooterComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
