@@ -2,13 +2,12 @@ import { suraName } from './../../shared/interfaces/sura-name';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuranService } from 'src/app/shared/services/quran.service';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-sura',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home-sura.component.html',
   styleUrls: ['./home-sura.component.scss'],
 })
@@ -36,7 +35,6 @@ export class HomeSuraComponent {
             this.id.push(this.suraName[i].id.toString());
           }
         }
-        // console.log(this.id);
       },
       error: (err) => {
         console.log(err);
