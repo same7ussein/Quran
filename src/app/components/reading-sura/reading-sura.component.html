@@ -1,4 +1,9 @@
-<p>reading-sura works!</p>
+<div class="ar-text-reading">
+    <p *ngFor="let item of suraopj"><span>{{item.text_indopak}}</span></p>
+</div>
+
+
+
 <audio controls [src]="suraAudio.audio_url"></audio>
 
 <select [(ngModel)]="reciterId"  (click)="reciterchange()">
