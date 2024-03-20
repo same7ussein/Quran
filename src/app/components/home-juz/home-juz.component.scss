@@ -4,6 +4,9 @@
 .juzsContainer{
     column-count: 3;
 }
+.juzs{
+    background-image: linear-gradient(45deg, #1c857f 0%, #3ab6aa 60%);
+}
 .diamond{
     background-color:#eeeeef;
     display: flex;
@@ -33,8 +36,9 @@ p{
     cursor: pointer;
 }
 .sura-name:hover{
-background-color: #F8F9FA;
+background-color: #F8F9FA !important;
 border: .0625rem solid #3AB6AA ;
+
 .f--small{
     color: #3AB6AA !important;
 }

@@ -4,7 +4,11 @@ const routes: Routes = [
   
   {path:"",loadComponent:()=>import('./components/blan-layout/blan-layout.component').then((m)=>m.BlanLayoutComponent),children:[
     {path:"",redirectTo:"home",pathMatch:'full'},
-    {path:"home",loadComponent:()=>import('./components/home/home.component').then((m)=>m.HomeComponent)},
+    {path:"home",loadComponent:()=>import('./components/home/home.component').then((m)=>m.HomeComponent),children:[
+      {path:"",redirectTo:"suras" , pathMatch:'full'},
+      {path:"suras",loadComponent:()=>import('./components/home-sura/home-sura.component').then((m)=>m.HomeSuraComponent)},
+      {path:"juzs",loadComponent:()=>import('./components/home-juz/home-juz.component').then((m)=>m.HomeJuzComponent)},
+    ]},
     {path:"reading/:id",loadComponent:()=>import('./components/reading-sura/reading-sura.component').then((m)=>m.ReadingSuraComponent)}
   ]},
   {path:"",loadComponent:()=>import('./components/auth-layout/auth-layout.component').then((m)=>m.AuthLayoutComponent),children:[
