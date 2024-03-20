@@ -14,21 +14,7 @@ $sec-color:#A4C7C4;
     @extend .common
    
 }
-li  {
-    input{
-        background-color: #F2F2F2 ;
-   
-        border-radius: 16px;
-        border: none;
-        background-image: url('./assets/images/search-svgrepo-com.svg');
-        background-position: 12px 10px; 
-        
-        background-repeat: no-repeat; 
-        background-size: 18px;
-        
-    }
 
-}
 .form-control:focus{
     box-shadow: none;
   
