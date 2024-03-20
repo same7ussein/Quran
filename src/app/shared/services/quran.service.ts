@@ -12,6 +12,9 @@ export class QuranService {
   suraName():Observable<any>{
     return this._HttpClient.get(`https://api.quran.com/api/v4/chapters`)
   }
+  juzName():Observable<any>{
+    return this._HttpClient.get(`https://api.quran.com/api/v4/juzs`)
+  }
   SpecialQuran(id:number):Observable<any>{
     return this._HttpClient.get(`https://api.quran.com/api/v4/quran/verses/indopak?chapter_number=${id}`)
   }
