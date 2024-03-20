@@ -22,12 +22,9 @@
     "@ng-bootstrap/ng-bootstrap": "^15.1.2",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.3.3",
-<<<<<<< HEAD
     "ngx-spinner": "^16.0.2",
-=======
     "ngx-loading": "^17.0.0",
     "ngx-owl-carousel-o": "^17.0.0",
->>>>>>> ae362a62d88918d21972bd118ff1c46697c84c2a
     "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "swiper": "^11.0.7",
