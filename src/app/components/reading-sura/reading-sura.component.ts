@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 export class ReadingSuraComponent implements OnInit {
 constructor(private _QuranService:QuranService , private _ActivatedRoute:ActivatedRoute){}
 suraId:any=0
-suraopj:Sura={} as Sura
+suraopj:Sura[]=[]
 suraAudio:SuraAudio={} as SuraAudio;
 reciterId:number=7
 reciters:Reciter[]=[]
@@ -41,7 +41,7 @@ this._ActivatedRoute.paramMap.subscribe({
 getSpecialSura():void{
   this._QuranService.SpecialQuran(this.suraId).subscribe({
     next:(res)=>{
-      // console.log(res.verses);
+      console.log(res.verses);
       this.suraopj=res.verses
     }
   })
@@ -65,7 +65,7 @@ getReciter():void{
   })
 }
 reciterchange():void{
-  console.log(this.reciterId);
+  // console.log(this.reciterId);
   this._QuranService.QuranSpecialAudio(this.suraId,this.reciterId).subscribe({
     next:(res)=>{
       this.suraAudio=res.audio_file
