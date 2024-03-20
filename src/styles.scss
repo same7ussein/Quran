@@ -6,11 +6,16 @@
 @import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
 @import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 
+body {
+  // English Font
+  font-family: "Roboto", sans-serif;
+}
+
 @font-face {
   font-family: "quran";
-
-  src: url("assets/sura_names.woff2") format("woff2");
-}
+    font-family: 'quran';
+    src: url('assets/sura_names.woff2') format('woff2');
+  }
 
 .ar-text {
   font-family: "quran", sans-serif;
@@ -55,4 +60,9 @@
     background-color: #fff;
     color: #3ab6aa;
   }
+}
+//! for reading commponant
+.ar-text-reading{
+  direction: rtl;
+  font-family:  "Amiri Quran", serif;
 }
