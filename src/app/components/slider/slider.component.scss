@@ -1,0 +1,29 @@
+owl-carousel-o img {
+  height: 450px;
+  background-size: cover;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  color: #fff;
+  padding: 30px;
+}
+
+.slider__content {
+  max-width: 600px;
+  padding: 20px;
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  border-radius: 10px;
+
+  p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width:992px) {
+  .layer {
+
+    padding: 5%;
+  }
+}
