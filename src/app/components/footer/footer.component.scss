@@ -2,6 +2,14 @@ footer {
 
     background-color: #299083;
     background-image: linear-gradient(90deg, #1c857f 0%, #3ab6aa 85%);
+    position: relative;
+
+    .palestine-map {
+        position: absolute;
+        right: 2%;
+        bottom: 5%;
+        opacity: 0.4;
+    }
 
     .title-caption {
         font-size: .875rem;
