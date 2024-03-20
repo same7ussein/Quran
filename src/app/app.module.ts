@@ -24,6 +24,4 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  
-}
+export class AppModule {}

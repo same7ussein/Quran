@@ -31,7 +31,6 @@ ngOnInit(): void {
 getSuraId():void{
 this._ActivatedRoute.paramMap.subscribe({
   next:(res)=>{
-    // console.log(res.get('id'));
     this.suraId=res.get('id');
     
   }
@@ -49,7 +48,6 @@ getSpecialSura():void{
 getSpecialaudio():void{
   this._QuranService.QuranSpecialAudio(this.suraId).subscribe({
     next:(res)=>{
-      // console.log(res.audio_file);
       this.suraAudio=res.audio_file
     }
   })
@@ -65,7 +63,6 @@ getReciter():void{
   })
 }
 reciterchange():void{
-  // console.log(this.reciterId);
   this._QuranService.QuranSpecialAudio(this.suraId,this.reciterId).subscribe({
     next:(res)=>{
       this.suraAudio=res.audio_file
@@ -73,5 +70,4 @@ reciterchange():void{
   })
   
 }
-
 }
