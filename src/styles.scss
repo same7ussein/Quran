@@ -12,14 +12,13 @@ body {
 }
 
 @font-face {
- 
     font-family: 'quran';
     src: url('assets/sura_names.woff2') format('woff2');
   }
 
-.ar-text {
-  font-family: "quran", sans-serif;
-  direction: rtl;
+.ar-text{
+    font-family: 'quran',sans-serif ;
+    direction: rtl;
 }
 
 //! owl slider
