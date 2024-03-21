@@ -1,18 +1,20 @@
-import { Reciter } from './../../shared/interfaces/reciter';
-import { SuraAudio } from './../../shared/interfaces/sura-audio';
-import { Sura } from './../../shared/interfaces/sura';
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ElementRef, ViewChild } from '@angular/core';
 import { QuranService } from 'src/app/shared/services/quran.service';
 import { ActivatedRoute } from '@angular/router';
+import { SuraAudio } from './../../shared/interfaces/sura-audio';
+import { Sura } from './../../shared/interfaces/sura';
+import { Reciter } from './../../shared/interfaces/reciter';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reading-sura',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './reading-sura.component.html',
-  styleUrls: ['./reading-sura.component.scss']
+  styleUrls: ['./reading-sura.component.scss'],
 })
 export class ReadingSuraComponent implements OnInit {
 constructor(private _QuranService:QuranService , private _ActivatedRoute:ActivatedRoute){}
