@@ -1,10 +1,10 @@
 <div class="ar-text-reading text-center">
-    <p *ngFor="let item of suraopj"><span>{{item.text_indopak}}</span></p>
+    <p *ngFor="let item of suraopj; let i = index" (click)="printVerseKey(item.verse_key)">
+        <span>{{item.text_indopak}}</span>
+    </p>
 </div>
 
-
-
-<audio controls [src]="suraAudio.audio_url"></audio>
+<audio controls [src]="suraAudio.audio_url" #audioPlayer></audio>
 
 <select [(ngModel)]="reciterId"  (click)="reciterchange()">
     <option  *ngFor="let item of reciters" [value]="item.id" class="ar-text-reading" >{{item.translated_name.name}}</option>
