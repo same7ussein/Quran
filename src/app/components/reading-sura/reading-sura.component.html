@@ -1,11 +1,26 @@
-<div class="ar-text-reading text-center">
-    <p *ngFor="let item of suraopj"><span>{{item.text_indopak}}</span></p>
+<div class="w-50 mx-auto my-frame">
+  <div class="ar-text-reading text-center">
+    <!-- <p *ngFor="let item of suraopj">
+      <span>{{ item.text_indopak }}</span>
+    </p> -->
+    <span *ngFor="let item of suraopj">
+      <span
+        [ngClass]="toggle ? 'p' + item.v1_page + '-v1' : ''"
+        class="ayah-size"
+        >{{ item.code_v1 }}</span
+      >
+    </span>
+  </div>
 </div>
-
-
 
 <audio controls [src]="suraAudio.audio_url"></audio>
 
-<select [(ngModel)]="reciterId"  (click)="reciterchange()">
-    <option  *ngFor="let item of reciters" [value]="item.id" class="ar-text-reading" >{{item.translated_name.name}}</option>
+<select [(ngModel)]="reciterId" (click)="reciterchange()">
+  <option
+    *ngFor="let item of reciters"
+    [value]="item.id"
+    class="ar-text-reading"
+  >
+    {{ item.translated_name.name }}
+  </option>
 </select>

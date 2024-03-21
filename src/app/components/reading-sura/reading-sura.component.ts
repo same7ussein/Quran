@@ -17,10 +17,11 @@ import { FormsModule } from '@angular/forms';
 export class ReadingSuraComponent implements OnInit {
 constructor(private _QuranService:QuranService , private _ActivatedRoute:ActivatedRoute){}
 suraId:any=0
-suraopj:Sura[]=[]
+suraopj:any
 suraAudio:SuraAudio={} as SuraAudio;
 reciterId:number=7
 reciters:Reciter[]=[]
+toggle:boolean = true
 ngOnInit(): void {
     this.getSuraId()
     this.getSpecialSura()
@@ -70,4 +71,8 @@ reciterchange():void{
   })
   
 }
+
+
+
+
 }
