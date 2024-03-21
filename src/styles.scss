@@ -42,12 +42,16 @@ body {
 
 @font-face {
     font-family: 'quran';
-    src: url('assets/sura_names.woff2') format('woff2');
+    src: url('assets/Fonts/sura_names.woff2') format('woff2');
   }
 
 .ar-text{
     font-family: 'quran',sans-serif ;
     direction: rtl;
+}
+
+.ayah-size {
+  font-size: 1.5rem;
 }
 
 //! owl slider
@@ -95,3 +99,25 @@ body {
   direction: rtl;
   font-family:  "Amiri Quran", serif;
 }
+
+
+@for $i from 1 through 604 {
+
+  @font-face {
+    font-family: 'ayahs#{$i}';
+    src: url(assets/Fonts/woff/p#{$i}.woff) format('woff');
+  }
+}
+
+
+
+
+@for $i from 1 through 604 {
+  .p#{$i}-v1 {
+
+    font-family: 'ayahs#{$i}';
+  }
+}
+
+
+

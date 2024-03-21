@@ -13,10 +13,10 @@ export class QuranService {
   juzName(): Observable<any> {
     return this._HttpClient.get(`https://api.quran.com/api/v4/juzs`);
   }
-  SpecialQuran(id: number): Observable<any> {
-    return this._HttpClient.get(
-      `https://api.quran.com/api/v4/quran/verses/indopak?chapter_number=${id}`
-    );
+  SpecialQuran(id:number):Observable<any>{
+    // return this._HttpClient.get(`https://api.quran.com/api/v4/quran/verses/indopak?chapter_number=${id}`)
+    // return this._HttpClient.get(`https://api.quran.com/api/v4/verses/by_chapter/${id}?words=true&language=ar`)
+    return this._HttpClient.get(`https://api.quran.com/api/v4/quran/verses/code_v1?chapter_number=${id}`)
   }
   QuranSpecialAudio(chapter: number, Recitation: number = 7): Observable<any> {
     return this._HttpClient.get(

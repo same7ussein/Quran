@@ -17,112 +17,64 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./reading-sura.component.scss'],
 })
 export class ReadingSuraComponent implements OnInit {
-  @ViewChild('audioPlayer') audioPlayer: any;
+constructor(private _QuranService:QuranService , private _ActivatedRoute:ActivatedRoute){}
+suraId:any=0
+suraopj:any
+suraAudio:SuraAudio={} as SuraAudio;
+reciterId:number=7
+reciters:Reciter[]=[]
+toggle:boolean = true
+ngOnInit(): void {
+    this.getSuraId()
+    this.getSpecialSura()
+    this.getSpecialaudio()
+    this.getReciter()
+}
 
-  constructor(
-    private _QuranService: QuranService,
-    private _ActivatedRoute: ActivatedRoute
-  ) {}
-  suraId: any = 0;
-  suraopj: Sura[] = [];
-  suraAudio: SuraAudio = {} as SuraAudio;
-  reciterId: number = 7;
-  reciters: Reciter[] = [];
+getSuraId():void{
+this._ActivatedRoute.paramMap.subscribe({
+  next:(res)=>{
+    this.suraId=res.get('id');
+    
+  }
+})
+}
 
-  specificTime: number = 0;
+getSpecialSura():void{
+  this._QuranService.SpecialQuran(this.suraId).subscribe({
+    next:(res)=>{
+      console.log(res.verses);
+      this.suraopj=res.verses
+    }
+  })
+}
+getSpecialaudio():void{
+  this._QuranService.QuranSpecialAudio(this.suraId).subscribe({
+    next:(res)=>{
+      this.suraAudio=res.audio_file
+    }
+  })
+}
+getReciter():void{
+  this._QuranService.recitations().subscribe({
+    next:(res)=>{
+      console.log(res);
+      this.reciters=res.recitations
+      
+      
+    }
+  })
+}
+reciterchange():void{
+  this._QuranService.QuranSpecialAudio(this.suraId,this.reciterId).subscribe({
+    next:(res)=>{
+      this.suraAudio=res.audio_file
+    }
+  })
+  
+}
 
-  ngOnInit(): void {
-    this.getSuraId();
-    this.getSpecialSura();
-    this.getSpecialaudio();
-    this.getReciter();
-  }
 
-  getSuraId(): void {
-    this._ActivatedRoute.paramMap.subscribe({
-      next: (res) => {
-        this.suraId = res.get('id');
-      },
-    });
-  }
 
-  getSpecialSura(): void {
-    this._QuranService.SpecialQuran(this.suraId).subscribe({
-      next: (res) => {
-        console.log(res.verses);
-        this.suraopj = res.verses;
-      },
-    });
-  }
-  getSpecialaudio(): void {
-    this._QuranService.QuranSpecialAudio(this.suraId).subscribe({
-      next: (res) => {
-        this.suraAudio = res.audio_file;
-      },
-    });
-  }
-  getReciter(): void {
-    this._QuranService.recitations().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.reciters = res.recitations;
-      },
-    });
-  }
-  reciterchange(): void {
-    this._QuranService
-      .QuranSpecialAudio(this.suraId, this.reciterId)
-      .subscribe({
-        next: (res) => {
-          this.suraAudio = res.audio_file;
-        },
-      });
-  }
-  printVerseKey(verseKey: string): void {
-    const audioElement = this.audioPlayer.nativeElement;
-    audioElement.pause();
-    this.audioFromSpecificAyah(this.reciterId, this.suraId, verseKey);
-  }
 
-  playChapterAudio(): void {
-    const audioElement = this.audioPlayer.nativeElement;
-    audioElement.src = this.suraAudio.audio_url;
-  }
-
-  audioFromSpecificAyah(
-    id: number,
-    chapter_num: number,
-    verseKey: string
-  ): void {
-    this._QuranService.audioFromSpecificAyah(id, chapter_num).subscribe({
-      next: (res) => {
-        const verseIndex = res.audio_files.findIndex(
-          (audio: any) => audio.verse_key === verseKey
-        );
-        const higherUrls = res.audio_files
-          .slice(verseIndex)
-          .map((audio: any) => `https://verses.quran.com/${audio.url}`);
-        console.log(higherUrls);
-        if (higherUrls.length > 0) {
-          const audioElement = this.audioPlayer.nativeElement;
-          let currentIndex = 0;
-          audioElement.src = higherUrls[currentIndex];
-          audioElement.play();
-          audioElement.addEventListener('ended', () => {
-            currentIndex++;
-            if (currentIndex < higherUrls.length) {
-              audioElement.src = higherUrls[currentIndex];
-              this.specificTime += Math.floor(audioElement.duration);
-              audioElement.play();
-            } else {
-              this.playChapterAudio();
-            }
-          });
-        }
-      },
-      error: (err: HttpErrorResponse) => {
-        console.log(err);
-      },
-    });
-  }
 }

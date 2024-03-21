@@ -1,32 +1,45 @@
 <section>
-    <div class="juzsContainer g-3">
-        <div class="d-inline-block w-100" *ngFor="let item of juzsName ; let i = index">
-            <div class="juzs p-3 my-3 rounded-3">
-                <div>
-                    <div class="text-white h5 fw-bolder">
-                        <span>Juz {{item.juz_number}}</span>
-                    </div>
-                    <div class="w-100 py-1" *ngFor="let suras of JuzSuras[i+1] ;let index =index">
-                        <div class="d-flex justify-content-between align-items-center border-muted w-100 p-2 rounded-3 sura-name bg-white"
-                            [routerLink]="['/reading',suras]">
-                            <div class="d-flex align-items-center">
-                                <div class="diamond text-black">
-                                    <span>{{suras}}</span>
-                                </div>
-                                <div class="">
-                                    <p class="h5 fw-bold"> {{suraName[suras-1].name_simple}}</p>
-                                    <span class="text-muted f--small ">{{suraName[suras-1].translated_name.name
-                                        }}</span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <p class="ar-text h2">{{ getNumber(suras) }}</p>
-                                <span class="text-muted f--small">{{item.verse_mapping[suras]}} Ayahs</span>
-                            </div>
-                        </div>
-                    </div>
+  <div class="juzsContainer g-3">
+    <div
+      class="d-inline-block w-100"
+      *ngFor="let item of juzsName; let i = index"
+    >
+      <div class="juzs p-3 my-3 rounded-3">
+        <div>
+          <div class="text-white h5 fw-bolder">
+            <span>Juz {{ item.juz_number }}</span>
+          </div>
+          <div
+            class="w-100 py-1"
+            *ngFor="let suras of JuzSuras[i + 1]; let index = index"
+          >
+            <div
+              class="d-flex justify-content-between align-items-center border-muted w-100 p-2 rounded-3 sura-name bg-white"
+              [routerLink]="['/reading', suras]"
+            >
+              <div class="d-flex align-items-center">
+                <div class="diamond text-black">
+                  <span>{{ suras }}</span>
                 </div>
+                <div class="">
+                  <p class="h5 fw-bold">
+                    {{ suraName[suras - 1].name_simple }}
+                  </p>
+                  <span class="text-muted f--small">{{
+                    suraName[suras - 1].translated_name.name
+                  }}</span>
+                </div>
+              </div>
+              <div class="text-center">
+                <p class="ar-text h2">{{ getNumber(suras) }}</p>
+                <span class="text-muted f--small"
+                  >{{ item.verse_mapping[suras] }} Ayahs</span
+                >
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
