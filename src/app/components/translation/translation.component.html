@@ -1,0 +1,10 @@
+<div class="ar-text-reading text-center">
+    <div class="w-50 mx-auto text-center">
+        <ng-container *ngFor="let item of suraWords; let i =index">
+            <span *ngIf="wordsAudio[i] !=''" (click)="audioPlay( wordsAudio[i],i)" class="d-inline-block px-1 my-2 word">{{item}}</span>
+
+            <span *ngIf="wordsAudio[i] ==''" class="d-inline-block my-2 px-1">{{item}}</span>
+        </ng-container>
+        <audio #audio id="audio" preload="auto"></audio>
+    </div>
+</div>

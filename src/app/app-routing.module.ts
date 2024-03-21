@@ -9,7 +9,8 @@ const routes: Routes = [
       {path:"suras",loadComponent:()=>import('./components/home-sura/home-sura.component').then((m)=>m.HomeSuraComponent)},
       {path:"juzs",loadComponent:()=>import('./components/home-juz/home-juz.component').then((m)=>m.HomeJuzComponent)},
     ]},
-    {path:"reading/:id",loadComponent:()=>import('./components/reading-sura/reading-sura.component').then((m)=>m.ReadingSuraComponent)}
+    {path:"reading/:id",loadComponent:()=>import('./components/reading-sura/reading-sura.component').then((m)=>m.ReadingSuraComponent)},
+    {path:"translation/:id",loadComponent:()=>import('./components/translation/translation.component').then((m)=>m.TranslationComponent)},
   ]},
   {path:"",loadComponent:()=>import('./components/auth-layout/auth-layout.component').then((m)=>m.AuthLayoutComponent),children:[
     {path:"login",loadComponent:()=>import('./components/login/login.component').then((m)=>m.LoginComponent)},
