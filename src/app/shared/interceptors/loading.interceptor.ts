@@ -18,6 +18,8 @@ export class LoadingInterceptor implements HttpInterceptor {
 this.spinner.show()
 
     return next.handle(request).pipe(finalize(()=>
-    {this.spinner.hide()}));
+    {
+      this.spinner.hide()
+    }));
   }
 }
