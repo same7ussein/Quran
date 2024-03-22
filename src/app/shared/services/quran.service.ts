@@ -36,6 +36,6 @@ export class QuranService {
   }
   
   getWordByWord(id:number , pageNum:number= 1):Observable<any>{
-    return this._HttpClient.get(`https://api.quran.com/api/v4/verses/by_chapter/${id}?words=true&word_fields=text_uthmani&page=${pageNum}`)
+    return this._HttpClient.get(`https://api.quran.com/api/v4/verses/by_chapter/${id}?words=true&word_fields=text_uthmani,code_v1&page=${pageNum}`)
   }
 }

@@ -16,9 +16,12 @@ export class TranslationComponent {
   @ViewChild('audio') audioPlayerRef!: ElementRef;
 
   suraId:any=0
-  suraWords:string[] =[]
-  wordsAudio:string[]=[]
+  suraWords:[string[]] =[[]]
+  wordsAudio:[string[]]=[[]]
   numOfPages!:number
+  toggle:boolean = true
+  pageNum:[number[]] =[[]]
+
 
   ngOnInit(): void {
     this.getSuraId()
@@ -46,15 +49,23 @@ export class TranslationComponent {
         }
         // save the audio sources and the words to display on html 
         for(var i = 0 ; i < response.verses.length ; i++){
+          var ayahWord:string[] =[];
+          var ayahAudio:string[] =[];
+          var ayahPageNum:number[] =[];
           for(var x = 0 ; x <response.verses[i].words.length; x++){
             if(x == response.verses[i].words.length-1){
-              this.suraWords.push(response.verses[i].words[x].text_uthmani);
-              this.wordsAudio.push('');
+              ayahWord.push(response.verses[i].words[x].code_v1);
+              ayahAudio.push('');
+              ayahPageNum.push(response.verses[i].words[x].page_number) 
             }else{
-              this.suraWords.push(response.verses[i].words[x].text_uthmani);
-              this.wordsAudio.push("https://verses.quran.com/"+response.verses[i].words[x].audio_url);
+              ayahWord.push(response.verses[i].words[x].code_v1);
+              ayahAudio.push("https://verses.quran.com/"+response.verses[i].words[x].audio_url);
+              ayahPageNum.push(response.verses[i].words[x].page_number) 
             }
           }
+          this.suraWords.push(ayahWord)
+          this.wordsAudio.push(ayahAudio)
+          this.pageNum.push(ayahPageNum)
         }
       }
     })

@@ -1,9 +1,14 @@
-<div class="ar-text-reading text-center">
-    <div class="w-50 mx-auto text-center">
+<div class="ar-text-reading">
+    <div class="w-50 mx-auto">
         <ng-container *ngFor="let item of suraWords; let i =index">
-            <span *ngIf="wordsAudio[i] !=''" (click)="audioPlay( wordsAudio[i],i)" class="d-inline-block px-1 my-2 word">{{item}}</span>
-
-            <span *ngIf="wordsAudio[i] ==''" class="d-inline-block my-2 px-1">{{item}}</span>
+            <div class="bg-body-secondary my-3">
+                <div class="w-75 ms-auto">
+                    <ng-container *ngFor="let words of item; let x = index">
+                        <span *ngIf="wordsAudio[i][x] !=''" (click)="audioPlay( wordsAudio[i][x],i)" [ngClass]="toggle? 'p' + pageNum[i][x] + '-v1' : ''" class="ayah-size d-inline-block px-1 my-2 word">{{words}}</span>
+                        <span *ngIf="wordsAudio[i][x] ==''" [ngClass]="toggle? 'p' + pageNum[i][x] + '-v1' : ''" class="ayah-size d-inline-block my-2 px-1">{{words}}</span>
+                    </ng-container>
+                </div>
+            </div>
         </ng-container>
         <audio #audio id="audio" preload="auto"></audio>
     </div>
