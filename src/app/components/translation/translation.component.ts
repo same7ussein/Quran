@@ -16,12 +16,8 @@ export class TranslationComponent {
   @ViewChild('audio') audioPlayerRef!: ElementRef;
 
   suraId:any=0
-  suraWords:[string[]] =[[]]
-  wordsAudio:[string[]]=[[]]
-  numOfPages!:number
   toggle:boolean = true
-  pageNum:[number[]] =[[]]
-
+  apiResponse:any =[];
 
   ngOnInit(): void {
     this.getSuraId()
@@ -41,46 +37,30 @@ export class TranslationComponent {
   getSuraWords(pagesNumber:number = 1):void{
     this._QuranService.getWordByWord(this.suraId,pagesNumber).subscribe({
       next:(response)=>{
-        // check number of pages
-        this.numOfPages= response.pagination.total_pages
-        // check if there is more pages and if yes call the next page 
-        if(response.pagination.current_page < response.pagination.total_pages){
-          this.getNextPage(response.pagination.current_page +1 )
-        }
-        // save the audio sources and the words to display on html 
+        // save the response
         for(var i = 0 ; i < response.verses.length ; i++){
-          var ayahWord:string[] =[];
-          var ayahAudio:string[] =[];
-          var ayahPageNum:number[] =[];
+          var ayahresponse:any =[]
           for(var x = 0 ; x <response.verses[i].words.length; x++){
-            if(x == response.verses[i].words.length-1){
-              ayahWord.push(response.verses[i].words[x].code_v1);
-              ayahAudio.push('');
-              ayahPageNum.push(response.verses[i].words[x].page_number) 
-            }else{
-              ayahWord.push(response.verses[i].words[x].code_v1);
-              ayahAudio.push("https://verses.quran.com/"+response.verses[i].words[x].audio_url);
-              ayahPageNum.push(response.verses[i].words[x].page_number) 
-            }
+              ayahresponse.push(response.verses[i])
           }
-          this.suraWords.push(ayahWord)
-          this.wordsAudio.push(ayahAudio)
-          this.pageNum.push(ayahPageNum)
+          this.apiResponse.push(ayahresponse)
+        }
+        // check number of pages
+        const numOfPages= response.pagination.total_pages
+        const currentPage= response.pagination.current_page
+        // check if there is more pages and if yes call the next page 
+        if(currentPage < numOfPages){
+          this.getSuraWords(currentPage +1 )
         }
       }
     })
   }
 
   audioPlay(source:string, i:number):any{ 
-
     // start the new audio
     const audioPlayer = this.audioPlayerRef.nativeElement as HTMLAudioElement;
-    audioPlayer.src = source;
-    audioPlayer.currentTime = 0;   
+    audioPlayer.src = `https://verses.quran.com/`+ source;
     audioPlayer.play();   
     }
 
-    getNextPage(nextPageNum:number):void{
-      this.getSuraWords(nextPageNum);
-    }
 }

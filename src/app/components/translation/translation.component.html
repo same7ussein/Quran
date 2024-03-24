@@ -1,11 +1,11 @@
 <div class="ar-text-reading">
     <div class="w-50 mx-auto">
-        <ng-container *ngFor="let item of suraWords; let i =index">
+        <ng-container *ngFor="let item of apiResponse; let i =index">
             <div class="bg-body-secondary my-3">
                 <div class="w-75 ms-auto">
-                    <ng-container *ngFor="let words of item; let x = index">
-                        <span *ngIf="wordsAudio[i][x] !=''" (click)="audioPlay( wordsAudio[i][x],i)" [ngClass]="toggle? 'p' + pageNum[i][x] + '-v1' : ''" class="ayah-size d-inline-block px-1 my-2 word">{{words}}</span>
-                        <span *ngIf="wordsAudio[i][x] ==''" [ngClass]="toggle? 'p' + pageNum[i][x] + '-v1' : ''" class="ayah-size d-inline-block my-2 px-1">{{words}}</span>
+                    <ng-container *ngFor="let words of item ; let x = index">
+                            <span *ngIf="words.words[x].audio_url != null" (click)="audioPlay( words.words[x].audio_url,i)" [ngClass]="toggle? 'p' + words.words[x].page_number + '-v1' : ''" class="ayah-size d-inline-block px-1 my-2 word cursor">{{words.words[x].code_v1}}</span>
+                            <span *ngIf="words.words[x].audio_url == null" [ngClass]="toggle? 'p' + words.words[x].page_number + '-v1' : ''" class="ayah-size d-inline-block px-1 my-2">{{words.words[x].code_v1}}</span>
                     </ng-container>
                 </div>
             </div>
