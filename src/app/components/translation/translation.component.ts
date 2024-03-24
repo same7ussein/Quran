@@ -41,6 +41,8 @@ export class TranslationComponent {
   getSuraWords(pagesNumber:number = 1):void{
     this._QuranService.getWordByWord(this.suraId,pagesNumber).subscribe({
       next:(response)=>{
+      
+        
         // check number of pages
         this.numOfPages= response.pagination.total_pages
         // check if there is more pages and if yes call the next page 
