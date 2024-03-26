@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { QuranService } from 'src/app/shared/services/quran.service';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-translation',
@@ -9,12 +10,18 @@ import { QuranService } from 'src/app/shared/services/quran.service';
   imports: [CommonModule],
   templateUrl: './translation.component.html',
   styleUrls: ['./translation.component.scss'],
+  providers: [NgbModalConfig, NgbModal],
 })
 export class TranslationComponent {
   constructor(
     private _QuranService: QuranService,
-    private _ActivatedRoute: ActivatedRoute
-  ) {}
+    private _ActivatedRoute: ActivatedRoute,
+    config: NgbModalConfig,
+		private modalService: NgbModal,
+  ) {
+    config.backdrop = 'static';
+		config.keyboard = false;
+  }
 
   @ViewChild('audio') audioPlayerRef!: ElementRef;
 
@@ -22,6 +29,7 @@ export class TranslationComponent {
   toggle: boolean = true;
   apiResponse: any = [];
   apiRes: any = [];
+  taffsirRes:any;
 
   ngOnInit(): void {
     this.getSuraId();
@@ -84,6 +92,19 @@ export class TranslationComponent {
     document.execCommand('copy');
     document.body.removeChild(x);
   }
+
+
+  getTafssir(versekey:string):void{
+    this._QuranService.getTaffsirByAyah(versekey).subscribe({
+      next:(res)=>{
+        console.log(res.tafsir);
+        this.taffsirRes=res.tafsir
+      }
+    })
+  }
+  open(content:any) {
+		this.modalService.open(content);
+	}
   
 
   

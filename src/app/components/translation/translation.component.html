@@ -20,15 +20,18 @@
               data-toggle="tooltip"
               data-placement="right"
               title="get tafsir of ayah"
+              (click)="getTafssir(item.verse_key)"
+              (click)="open(content)"
             ></i>
+            
           </div>
           <div >
-            <button
+            <i
               class="fa-regular fa-copy cursor"
               data-toggle="tooltip"
               data-placement="right"
               title="copy"
-            ></button>
+            ></i>
           </div>
         </div> 
        <div class="w-90">
@@ -61,5 +64,19 @@
       </div>
     </ng-container>
     <audio #audio id="audio" preload="auto"></audio>
+    
+
+<ng-template #content let-c="close" let-d="dismiss"> 
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{taffsirRes.translated_name.name}}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{taffsirRes.text}}</p>
+      </div>
+      
+    </ng-template> 
+    
+   
   </div>
 </div>
