@@ -36,6 +36,9 @@ export class QuranService {
   }
   
   getWordByWord(id:number , pageNum:number= 1):Observable<any>{
-    return this._HttpClient.get(`https://api.quran.com/api/v4/verses/by_chapter/${id}?words=true&word_fields=text_uthmani,code_v1&page=${pageNum}`)
+    return this._HttpClient.get(`https://api.quran.com/api/v4/verses/by_chapter/${id}?words=true&word_fields=text_uthmani,code_v1&page=${pageNum}&audio=7`)
+  }
+  getTaffsirByAyah(verse_key:string):Observable<any>{
+    return this._HttpClient.get(`https://api.quran.com/api/v4/tafsirs/16/by_ayah/${verse_key}`)
   }
 }

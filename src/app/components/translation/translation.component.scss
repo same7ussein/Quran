@@ -1,15 +1,22 @@
 .word:hover{
     color: #3AB6AA ;
 }
-
-.mini-sidebar {
-  left: 0;
-  top: 0;
-
-}
-i{
-    padding-block: 5px;
+.cursor{
     cursor: pointer;
-    color: rgb(104, 104, 104)
-    ;
+}
+.mini-sideba{
+    position: absolute;
+    top: 0;
+    left: 0;
+   
+}
+.en-text{
+    direction: ltr !important;
+}
+.w-10{
+    width: 3%;
+  
+}
+.w-90{
+    width: 95%;
 }
