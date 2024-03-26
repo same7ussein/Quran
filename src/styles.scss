@@ -6,35 +6,45 @@
 @import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
 @import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
 
+::selection{
+  color: #79FFE1;
+}
+.input-common{
+  background-color: #F2F2F2 ;
+   
+  border-radius: 16px;
+  border: none;
+  background-image: url('./assets/images/search-svgrepo-com.svg');
+  background-position: 12px 10px; 
+  
+  background-repeat: no-repeat; 
+  background-size: 18px;
+}
 
 // navbar styles 
-li 
-{ a{
-     color: black;
+.nav-link:focus, .nav-link:hover{
+  color: black;
 }
-   
 
+.nav-link{
+  color: black;
 }
+
 li  {
-    input{
-        background-color: #F2F2F2 ;
-   
-        border-radius: 16px;
-        border: none;
-        background-image: url('./assets/images/search-svgrepo-com.svg');
-        background-position: 12px 10px; 
-        
-        background-repeat: no-repeat; 
-        background-size: 18px;
-        
-    }
+   input {
+    @extend .input-common;
+   }
 
 }
 .form-control:focus{
     box-shadow: none;
   
 }
-//navbar styles
+.bg-reciter input {
+ @extend .input-common;
+}
+
+
 body {
   // English Font
   font-family: "Roboto", sans-serif;
