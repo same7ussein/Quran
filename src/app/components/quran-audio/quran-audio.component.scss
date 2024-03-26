@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    min-height: 100vh;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .audio{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  .sm-mb{
+    margin-bottom: 3px;
+  }

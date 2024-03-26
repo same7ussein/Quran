@@ -4,6 +4,10 @@ const routes: Routes = [
   
   {path:"",loadComponent:()=>import('./components/blan-layout/blan-layout.component').then((m)=>m.BlanLayoutComponent),children:[
     {path:"",redirectTo:"home",pathMatch:'full'},
+    {path:"reciters",loadComponent:()=>import('./components/reciters/reciters.component').then((m)=>m.RecitersComponent),
+   
+   },
+   {path:'audio/:id',loadComponent:()=>import('./components/quran-audio/quran-audio.component').then((m)=>m.QuranAudioComponent)},
     {path:"home",loadComponent:()=>import('./components/home/home.component').then((m)=>m.HomeComponent),children:[
       {path:"",redirectTo:"suras" , pathMatch:'full'},
       {path:"suras",loadComponent:()=>import('./components/home-sura/home-sura.component').then((m)=>m.HomeSuraComponent)},

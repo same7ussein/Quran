@@ -7,11 +7,14 @@ import { BlanLayoutComponent } from './components/blan-layout/blan-layout.compon
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { ReciterSearchPipe } from './shared/pipes/reciter-search.pipe';
+
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+   
     BrowserModule,
     AppRoutingModule,
     BlanLayoutComponent,
