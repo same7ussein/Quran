@@ -25,8 +25,7 @@ export class QuranAudioComponent implements OnInit {
   constructor(private _route : ActivatedRoute ,private quran :QuranService){
 
   }
-  // file$:Observable<any>;
-  baseUrl:string='https://download.quranicaudio.com/qdc/abdul_baset/mujawwad/';
+  // baseUrl:string='https://download.quranicaudio.com/qdc/abdul_baset/mujawwad/';
   suraAudios:SuraAudio={
     id: 0,
     chapter_id: 0,
@@ -40,7 +39,6 @@ export class QuranAudioComponent implements OnInit {
     this._route.params.subscribe({
       next:(response)=>{
       this.id=response['id'];
-      // console.log(this.id);
 
       }
     });
@@ -53,7 +51,6 @@ export class QuranAudioComponent implements OnInit {
      {
        next:(response)=>{
         this.suraDetails = response.chapters;
-        // console.log(this.suraDetails);
        }
      }
     )
@@ -74,27 +71,18 @@ export class QuranAudioComponent implements OnInit {
         icon1.classList.replace('fa-play','fa-pause');
          this.flag=true;
 
-        // this.getSpecificAudio(suraId,this.id);
-        //    console.log(this.suraAudios);
-        //    console.log(suraId,this.id);
+       
 
         
         if(this.oldIcon!=icon1){
           this.oldIcon.classList.replace('fa-pause','fa-play');
            this.flag=true;
-          // this.getSpecificAudio(suraId,this.id);
-          // console.log(suraId,this.id);
-          // console.log(this.suraAudios);
-
-
-        //  console.log(this.oldIcon);
         }
         
 
       }else{
 
         icon1.classList.replace('fa-pause','fa-play');
-        // this.getSpecificAudio(suraId,this.id)
 
         
          this.flag=false;
@@ -106,7 +94,6 @@ export class QuranAudioComponent implements OnInit {
       if(this.i==0){
         this.i++;
       }
-      // console.log(this.flag);
    
   }
   getSpecificAudio(chapterId:number,reciterId:number){
@@ -117,6 +104,11 @@ export class QuranAudioComponent implements OnInit {
          this.suraAudios= response.audio_file;
          
          console.log(this.suraAudios.audio_url,"from specific audio");
+         if(this.downloadFlag==true){
+          FileSaver.saveAs(this.suraAudios.audio_url, this.suraAudios.format);
+           this.downloadFlag=false;
+         }
+        
         },
         error:(err)=>{
           console.log(err);
@@ -129,30 +121,11 @@ export class QuranAudioComponent implements OnInit {
 
   downloadFlag:boolean=false;
   downloadAudio(chapterId:number,reciterId:number){
-    let audio =`${this.baseUrl}${chapterId}.mp3`;
     this.downloadFlag=true;
-  //  this.getSpecificAudio(chapterId,reciterId);
-  this.quran.QuranSpecialAudio(chapterId,reciterId).subscribe({
-    next:(response)=>{
-      
-     this.suraAudios= response.audio_file;
-     
-     console.log(this.suraAudios.audio_url,"from specific audio");
-     FileSaver.saveAs(this.suraAudios.audio_url, this.suraAudios.format);
+    this.getSpecificAudio(chapterId,reciterId);
+  
 
-    },
-    error:(err)=>{
-      console.log(err);
-    }
-  })
-
-
-
-  //  console.log(audio,"from download");
-  //  console.log(this.suraAudios.audio_url,"from specific audio");
-
-      // FileSaver.saveAs(this.suraAudios.audio_url, this.suraAudios.format);
-    // this.downloadFlag=false;
+ 
   }
   
 }
