@@ -66,13 +66,13 @@
     <audio #audio id="audio" preload="auto"></audio>
     
 
-<ng-template #content let-c="close" let-d="dismiss"> 
+<ng-template  #content let-c="close" let-d="dismiss"> 
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">{{taffsirRes.translated_name.name}}</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-      </div>
-      <div class="modal-body">
-        <p>{{taffsirRes.text}}</p>
+      </div >
+      <div class="modal-body" [innerHTML]="taffsirRes.text">
+      
       </div>
       
     </ng-template> 
