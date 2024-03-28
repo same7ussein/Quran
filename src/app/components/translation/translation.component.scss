@@ -1,22 +1,17 @@
 .word:hover{
     color: #3AB6AA ;
 }
-.cursor{
-    cursor: pointer;
-}
+
 .mini-sideba{
     position: absolute;
     top: 0;
-    left: 0;
-   
+    left: 0; 
 }
-.en-text{
-    direction: ltr !important;
+
+.w-3{
+    width: 3%;  
 }
-.w-10{
-    width: 3%;
-  
-}
-.w-90{
+
+.w-95{
     width: 95%;
 }

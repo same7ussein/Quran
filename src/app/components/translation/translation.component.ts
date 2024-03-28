@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { QuranService } from 'src/app/shared/services/quran.service';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-translation',
@@ -10,18 +10,16 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
   imports: [CommonModule],
   templateUrl: './translation.component.html',
   styleUrls: ['./translation.component.scss'],
-  providers: [NgbModalConfig, NgbModal],
+  providers: [NgbModal],
 })
+
 export class TranslationComponent {
+
   constructor(
     private _QuranService: QuranService,
     private _ActivatedRoute: ActivatedRoute,
-    config: NgbModalConfig,
 		private modalService: NgbModal,
-  ) {
-    config.backdrop = 'static';
-		config.keyboard = false;
-  }
+    ){}
 
   @ViewChild('audio') audioPlayerRef!: ElementRef;
 
@@ -50,9 +48,6 @@ export class TranslationComponent {
     this._QuranService.getWordByWord(this.suraId, pagesNumber).subscribe({
       next: (response) => {
         response.verses.map((veres: any) => this.apiResponse.push(veres));
-
-     
-
         // check number of pages
         const numOfPages = response.pagination.total_pages;
         const currentPage = response.pagination.current_page;
@@ -61,51 +56,39 @@ export class TranslationComponent {
           this.getSuraWords(currentPage + 1);
         }
         if (currentPage >= numOfPages) {
-          // setTimeout(()=>{console.log(this.apiResponse);},7000)
           this.apiRes = this.apiResponse;
-          console.log(this.apiRes);
         }
-        // console.log(currentPage,numOfPages);
       },
     });
   }
 
   audioPlay(source: string): any {
     // start the new audio
-    console.log('DONE');
-
     const audioPlayer = this.audioPlayerRef.nativeElement as HTMLAudioElement;
     audioPlayer.src = `https://verses.quran.com/` + source;
     audioPlayer.play();
   }
-  copy(e:any) {
-    var text = e.text;
-    this.  copyToClipboard(e);
-    console.log(e);
-    
-  }
-  copyToClipboard(item:any) {
-    const x:any = document.createElement('TEXTAREA');
-    x.value = item;
-    document.body.appendChild(x);
-    x.select();
-    document.execCommand('copy');
-    document.body.removeChild(x);
-  }
 
+  copy(ayahText:number):void{
+    let ayahToCopy:string ='';
+
+    for (let word = 0; word < this.apiRes[ayahText -1].words.length ; word++) {
+        ayahToCopy += this.apiRes[ayahText -1].words[word].text_uthmani ;
+        ayahToCopy +=" ";
+    }
+
+    navigator.clipboard.writeText(ayahToCopy);
+  }
 
   getTafssir(versekey:string):void{
     this._QuranService.getTaffsirByAyah(versekey).subscribe({
       next:(res)=>{
-        console.log(res.tafsir);
         this.taffsirRes=res.tafsir
       }
     })
   }
+
   open(content:any) {
 		this.modalService.open(content);
 	}
-  
-
-  
 }

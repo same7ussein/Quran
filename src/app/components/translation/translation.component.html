@@ -1,82 +1,56 @@
-<div class="">
+<div>
   <div class="w-75 mx-auto">
     <ng-container *ngFor="let item of apiRes; let i = index">
       <div class="border-bottom my-3 position-relative d-flex justify-content-between py-3">
-            <div
-          class="d-flex text-muted flex-column w-10 justify-content-center  align-items-center mini-sidebar"
-        >
-         
-          <div (click)="audioPlay(item.audio.url)">
-            <i
-              class="fa-solid fa-play cursor"
-              data-toggle="tooltip"
-              data-placement="right"
-              title="play ayah"
-            ></i>
-          </div>
-          <div>
-            <i
-              class="fa-solid fa-book-open cursor"
-              data-toggle="tooltip"
-              data-placement="right"
-              title="get tafsir of ayah"
-              (click)="getTafssir(item.verse_key)"
-              (click)="open(content)"
-            ></i>
-            
-          </div>
-          <div >
-            <i
-              class="fa-regular fa-copy cursor"
-              data-toggle="tooltip"
-              data-placement="right"
-              title="copy"
-            ></i>
-          </div>
-        </div> 
-       <div class="w-90">
-        <div class="ar-text-reading  ms-auto">
-          <ng-container *ngFor="let word of item.words; let x = index">
-            <span
-              *ngIf="word.audio_url != null"
-              (click)="audioPlay(word.audio_url)"
-              [ngClass]="toggle ? 'p' + word.page_number + '-v1' : ''"
-              class="ayah-size d-inline-block px-1 my-2 word cursor"
-              >{{ word.code_v1 }}</span
-            >
-            <span
-              *ngIf="word.audio_url == null"
-              [ngClass]="toggle ? 'p' + word.page_number + '-v1' : ''"
-              class="ayah-size h1 d-inline-block px-1 my-3"
-              >{{ word.code_v1 }}</span
-            >
-          </ng-container>
-        </div>
-          
-          <div class="me-auto ">
-            <ng-container class="en-text  py-3 ms-auto " *ngFor="let word of item.words; let x = index">
-              <span class="my-3" >{{word.translation.text}}</span>
-            </ng-container>
-          </div>
-       </div>
+            <div class="d-flex text-muted flex-column w-3 justify-content-center  align-items-center mini-sidebar">
+
+                <div (click)="audioPlay(item.audio.url)">
+                  <i class="fa-solid fa-play pointer" data-toggle="tooltip" data-placement="right" title="play ayah"></i>
+                </div>
+
+                <div>
+                  <i class="fa-solid fa-book-open pointer" data-toggle="tooltip" data-placement="right" title="get tafsir of ayah" (click)="getTafssir(item.verse_key)" (click)="open(content)"></i>
+                </div>
+
+                <div>
+                <i class="fa-regular fa-copy pointer" data-toggle="tooltip" data-placement="right" title="copy" (click)="copy(item.verse_number)"></i>
+                </div>
+
+            </div> 
+            <div class="w-95">
+
+                <div class="ar-text-reading ms-auto">
+                  <ng-container *ngFor="let word of item.words; let x = index">
+                    <span *ngIf="word.audio_url != null" data-toggle="tooltip" data-placement="right" [title]="word.translation.text" (click)="audioPlay(word.audio_url)" [ngClass]="toggle ? 'p' + word.page_number + '-v1' : ''" class="h2 d-inline-block px-1 my-2 word pointer">{{ word.code_v1 }}</span>
+                    <span *ngIf="word.audio_url == null" [ngClass]="toggle ? 'p' + word.page_number + '-v1' : ''" class="h2 h1 d-inline-block px-1 my-3">{{ word.code_v1 }}</span>
+                  </ng-container>
+                </div>
+                
+                <div class="me-auto ">
+                  <ng-container class="py-3 ms-auto " *ngFor="let word of item.words; let x = index">
+                    <span *ngIf="word.audio_url != null" class="my-3 px-1" >{{word.translation.text}}</span>
+                  </ng-container>
+                </div>
+
+            </div>
         
-     
       </div>
     </ng-container>
     <audio #audio id="audio" preload="auto"></audio>
     
 
-<ng-template #content let-c="close" let-d="dismiss"> 
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">{{taffsirRes.translated_name.name}}</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-      </div>
-      <div class="modal-body">
-        <p>{{taffsirRes.text}}</p>
-      </div>
-      
+    <ng-template #content let-c="close" let-d="dismiss"> 
+
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">{{taffsirRes.translated_name.name}}</h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+
+        <div class="modal-body">
+          <p>{{taffsirRes.text}}</p>
+        </div>
+          
     </ng-template> 
     
-   
   </div>
 </div>
